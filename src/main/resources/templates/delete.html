@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/index::head">
+</head>
+<body>
+<section class="container">
+    <h3>Delete the city</h3>
+    <p th:text="'Do you want delete this city :'+${city.name}+'?'"></p>
+    <a class="btn btn-primary" th:href="@{/city/__${city.id}__/delete-ok}">Ok</a>
+    <a class="btn btn-primary" th:href="@{/city/index}">Exit</a>
+</section>
+</body>
+</html>

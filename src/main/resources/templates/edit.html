@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/index::head">
+</head>
+<body>
+<section class="container">
+    <h3 th:text="'Edit city :'+${city.name}"></h3>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <form method="post" th:object="${city}">
+        <input type="hidden" th:value="*{id}">
+        <table class="table">
+            <tr>
+                <td>Name :</td>
+                <td>
+                    <input class="form-control" type="text" th:field="*{name}">
+                </td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Nation :</td>
+                <td>
+                    <select th:field="*{nation}">
+                        <option th:each="n:${nations}" th:value="${n.id}" th:text="${n.name}"></option>
+                    </select>
+                </td>
+                <td th:if="${#fields.hasErrors('nation')}" th:errors="*{nation}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Area :</td>
+                <td>
+                    <input class="form-control" type="text" th:field="*{area}">
+                </td>
+                <td th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Population :</td>
+                <td>
+                    <input class="form-control" type="text" th:field="*{population}">
+                </td>
+                <td th:if="${#fields.hasErrors('population')}" th:errors="*{population}">Name Error</td>
+            </tr>
+            <tr>
+                <td>GDP :</td>
+                <td>
+                    <input class="form-control" type="text" th:field="*{gdp}">
+                </td>
+                <td th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Introduce :</td>
+                <td>
+                    <textarea class="form-control" cols="" th:field="*{description}"></textarea>
+                </td>
+                <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-primary">Update City</button>
+        <a class="btn btn-primary" th:href="@{/city/index}">Exit</a>
+    </form>
+</section>
+</body>
+</html>
